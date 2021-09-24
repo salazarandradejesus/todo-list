@@ -1,0 +1,48 @@
+<div class="container mt-5 justify-content-center align-items-center">
+    <div class="layout-row justify-content-center">
+        <input id="create-task-input" type="text" [(ngModel)] = "tarea" (keyup.enter)="agregarTarea()" class="large text-center" placeholder="Nueva Tarea"/>
+        <button (click)= "agregarTarea()" type="submit" class="ml-15 btn btn-primary" [(ngModel)] = "tarea">Agregar</button>
+    </div>
+</div>
+<div class="container mt-5 justify-content-center align-items-center">
+        <div class="flex-row box-wrapper"> 
+            <div class="col-3 white-box">
+                    <h3>Backlog</h3>
+                    <div cdkDropList class="example-list" id="list-backlog" [cdkDropListConnectedTo]="['list-todo','list-ongoing','list-done']" [cdkDropListData]="backlog"(cdkDropListDropped)="drop($event)">
+                        <div class="example-box" *ngFor="let item of backlog" cdkDrag>{{item.label}}
+                            <button type="button" class="btn btn-danger btn-xs" value="Delete" (click)="eliminarTarea(item)">x</button>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="col-3 white-box">
+                <h3>To do</h3>
+                <div cdkDropList class="example-list" id="list-todo" [cdkDropListConnectedTo]="['list-backlog','list-ongoing','list-done' ]" [cdkDropListData]="todo" (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.label}}
+                        <button type="button" class="btn btn-danger btn-xs" value="Delete" (click)="eliminarTarea(item)">x</button>
+                    </div>
+
+            </div>
+            </div>
+
+            <div class="col-3 white-box">
+                <h3>Ongoing</h3>
+                <div cdkDropList class="example-list" id="list-ongoing" [cdkDropListConnectedTo]="['list-backlog','list-done','list-todo']" [cdkDropListData]="ongoing" (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let item of ongoing" cdkDrag>{{item.label}}
+                        <button type="button" class="btn btn-danger btn-xs" value="Delete" (click)="eliminarTarea(item)" >x</button>
+                    </div>
+            </div>
+            </div>
+
+            <div class="col-3 white-box">
+                <h3>Done</h3>
+                <div cdkDropList class="example-list" id="list-done" [cdkDropListConnectedTo]="['list-backlog','list-ongoing','list-todo']" [cdkDropListData]="done" (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let item of done" cdkDrag>{{item.label}}
+                        <button type="button" class="btn btn-danger btn-xs" value="Delete" (click)="eliminarTarea(item)" >x</button>
+                    </div>
+            </div>
+            </div>
+        </div>
+
+
+</div>
