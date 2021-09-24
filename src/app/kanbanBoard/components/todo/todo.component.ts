@@ -14,7 +14,7 @@ interface LabeledValue {
 
 export class TodoComponent implements OnInit {
 
-  backlog: LabeledValue[] = [{label: "Ir al supermercado", id: 1
+  backlog: LabeledValue[] = [{label: "Go to the SuperMarket", id: 1
 }];
   todo: LabeledValue[] = [];
   ongoing: LabeledValue[] = [];
